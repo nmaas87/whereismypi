@@ -11,7 +11,8 @@ Installation on Raspberry Pi:
 
 1.) Download the WhereIsMyPi.jar to your Raspberry Pi, i.e.:
 
-    wget -O /home/pi/WhereIsMyPi.jar https://github.com/nmaas87/whereismypi/blob/master/WhereIsMyPi.jar?raw=true
+    curl -L https://github.com/nmaas87/whereismypi/blob/master/WhereIsMyPi.jar?raw=true > /home/pi/WhereIsMyPi.jar
+    
     
 2.) Configure Autostart for Where Is My Pi on boot:
 
