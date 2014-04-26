@@ -1,10 +1,13 @@
 whereismypi
 ===========
 by Nico Maas, 2014
+
 www.nico-maas.de
 
 
+
 Java Software Solution to find your embeeded Systems / Raspberry Pis faster in your network
+
 
 
 Installation on Raspberry Pi:
@@ -37,3 +40,32 @@ Just start WhereIsMyPi via double klicking the jar File
 
 
 Both guides assume that you already have Java 7 or higher installed on your RPi / PC
+
+
+
+
+
+
+Addititonal Information:
+
+Build Where Is My Pi from scratch:
+
+	  Download the src Folder from Github
+	  cd src
+	  javac *.java
+
+
+Start Where is My Pi on RPi:
+
+		
+		java DiscoverySystem server
+
+
+
+
+Start Where Is My Pi on PC:
+
+
+		java DiscoverySystem
+
+
