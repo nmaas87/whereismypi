@@ -1,9 +1,8 @@
-whereismypi
+whereismypi	![alt text](https://raw.githubusercontent.com/nmaas87/whereismypi/master/src/wmp.png "Where Is My Pi Logo") 
 ===========
 by Nico Maas, 2014
 
 www.nico-maas.de
-
 
 
 Java Software Solution to find your embeeded Systems / Raspberry Pis faster in your network
