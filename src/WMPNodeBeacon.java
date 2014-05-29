@@ -1,6 +1,6 @@
 /* 
 discoverySystem
-DiscoverySystemNodeBeacon
+WMPNodeBeacon
 Das NodeBeacon Objekt wird vom Node Objekt abgeleitet
 und ist das Objekt was auch vom DiscoveryServerThreadSocket
 uebertragen wird. Es enthaelt die Daten des Node Objektes
@@ -10,7 +10,7 @@ Als Mode sind folgende drin:
 1 - signoff / loeschen des Eintrags
 --> ggf 2 fuer den umzug aber noch nicht umgesetzt
 */
-public class DiscoverySystemNodeBeacon extends DiscoverySystemNode {
+public class WMPNodeBeacon extends WMPNode {
 
 	private static final long serialVersionUID = 6925430186776874224L;
 	private int   Mode;
@@ -32,13 +32,13 @@ public class DiscoverySystemNodeBeacon extends DiscoverySystemNode {
 		IP = iP;
 	}
 
-	public DiscoverySystemNodeBeacon(int Mode, String IP, String NodeName) {
+	public WMPNodeBeacon(int Mode, String IP, String NodeName) {
 		super(NodeName);
 		this.Mode=Mode;
 		this.IP=IP;
 	}
 
-	public DiscoverySystemNodeBeacon(int Mode, String IP, String NodeName, int Age) {
+	public WMPNodeBeacon(int Mode, String IP, String NodeName, int Age) {
 		super(NodeName,Age);
 		this.Mode=Mode;
 		this.IP=IP;

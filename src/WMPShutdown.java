@@ -1,11 +1,11 @@
 /* 
 discoverySystem
-DiscoverySystemShutdown
+WMPShutdown
 Die Shutdown Klasse richtet eine sogenannte "ShutdownHook" ein.
 Damit kann das OnExit von Java abgefangen und letzte Befehle ausgefuehrt werden.
 In diesem Fall wird es genutzt um das Signoff an die umgegebenden Clients zu senden.
 
-Im DiscoverySystem wird der ShutdownHook einmalig registriert, danach
+Im WMP wird der ShutdownHook einmalig registriert, danach
 wird er beim Abschalten der Software, z.B. bei STRG+C ausgefuehrt.
 Das System gibt die Nachricht Node shutting down aus und setzt
 die Variable SHUTDOWN auf wahr.
@@ -20,17 +20,17 @@ des Eintrags in der Hashtable geprueft haben, den Eintrag raus und speichern
 die Hashtable
 */
 
-public class DiscoverySystemShutdown {
+public class WMPShutdown {
 
  public void attachShutDownHook(){
  Runtime.getRuntime().addShutdownHook(new Thread() {
    @Override
    public void run() {
-  	System.out.println("Discovery System Shutdown: Node shutting down");
-  	DiscoverySystem.shutdown=true;
+  	System.out.println("WMPShutdown: Node shutting down");
+  	WMP.shutdown=true;
   	try 
   	{
-  		if (DiscoverySystem.server_mode == true)
+  		if (WMP.server_mode == true)
       {
         Thread.sleep(2000);
       }
@@ -41,7 +41,7 @@ public class DiscoverySystemShutdown {
     }   
    }
   });
-  System.out.println("Discovery System Shutdown: Shut Down Hook Attached.");
+  System.out.println("WMPShutdown: Shut Down Hook Attached.");
  }
 		
 }

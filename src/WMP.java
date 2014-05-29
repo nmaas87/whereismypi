@@ -4,17 +4,17 @@ Nico Maas
 mail@nico-maas.de
 26.11.2013 - 21.04.2014
 Diese Klasse erzeugt die 3 noetigen Threads fuer den Betrieb des discoverySystems
-DiscoveryServerThreadSocket: Sendet Daten an die Multicast Gruppe
-DiscoveryClientThreadSocket: Empfaengt Daten von der Multicast Gruppe
-DiscoveryClientThreadAgeing: Laesst Eintrage in der lokalen Hashtable altern/sterben
+WMPServerThreadSocket: Sendet Daten an die Multicast Gruppe
+WMPClientThreadSocket: Empfaengt Daten von der Multicast Gruppe
+WMPClientThreadAgeing: Laesst Eintrage in der lokalen Hashtable altern/sterben
 
 WARNUNG zum Aktiven Warten:
 Ich habe im Moment auf sleep verzichet und ein aktives Wartesystem eingebaut.
 Am Anfang wird gecheckt mittels der aktuellen Systemzeit in Sekunden,
 ob der Thread wieder arbeiten darf:
-if ((DiscoverySystem.getTime()-timeAgeing)>=DiscoverySystem.WAIT_TIME_AGEING)
+if ((WMP.getTime()-timeAgeing)>=WMP.WAIT_TIME_AGEING)
 Falls ja, geht er in die Schleife und setzt am Ende die lokale Variable
-timeAgeing=DiscoverySystem.getTime();
+timeAgeing=WMP.getTime();
 wieder auf die "letzte Ausfuehrungszeit"
 es wird immer gegen die Differenz der System spezifischen Konstante 
 (z.B. WAIT_TIME_AGEING) geprueft. Dadurch blockiert niemals ein Thread und
@@ -42,7 +42,7 @@ import java.io.*;
 import java.net.*;
 import java.util.*;
 
-public class DiscoverySystem {
+public class WMP {
 // Constants
 protected final static String  ADDR_MULTICAST="228.1.1.1";
 protected final static Integer PORT_MULTICAST_SERVER=50000;
@@ -50,12 +50,12 @@ protected final static Integer PORT_MULTICAST_CLIENT=50001;
 protected final static Integer WAIT_TIME_MULTICAST=10;
 protected final static Integer WAIT_TIME_AGEING=5;
 protected final static Integer DEFAULT_AGE=30;
-protected final static String  HASHTABLE_FILE="DiscoverySystemHashtable.ser";
+protected final static String  HASHTABLE_FILE="WMPHashtable.ser";
 // Variables
 protected static volatile boolean shutdown = false;
 protected static volatile boolean server_mode = false;
 // Hashtable
-protected static Hashtable<String, DiscoverySystemNode> discoveryMap = new Hashtable<String, DiscoverySystemNode>();
+protected static Hashtable<String, WMPNode> discoveryMap = new Hashtable<String, WMPNode>();
         
 public static void main(String[] args) throws java.io.IOException {
 
@@ -63,20 +63,20 @@ public static void main(String[] args) throws java.io.IOException {
   {
     server_mode = true;
     System.out.println("Headless Server Mode");
-    DiscoverySystemShutdown shutdownHook = new DiscoverySystemShutdown();
+    WMPShutdown shutdownHook = new WMPShutdown();
     shutdownHook.attachShutDownHook();
-    new DiscoveryServerThreadSocket().start();
+    new WMPServerThreadSocket().start();
   }
   else
   {
     System.out.println("GUI Client Mode");
-    DiscoverySystemShutdown shutdownHook = new DiscoverySystemShutdown();
+    WMPShutdown shutdownHook = new WMPShutdown();
     shutdownHook.attachShutDownHook();
-    DiscoverySystemSerializer.loadHashtable();
-    //new DiscoveryServerThreadSocket().start();
-    new DiscoveryClientThreadSocket().start();
-    new DiscoveryClientThreadAgeing().start();
-    new DiscoverySystemGUI().start();
+    WMPSerializer.loadHashtable();
+    //new WMPServerThreadSocket().start();
+    new WMPClientThreadSocket().start();
+    new WMPClientThreadAgeing().start();
+    new WMPGUI().start();
   }
 }
 

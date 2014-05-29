@@ -57,7 +57,7 @@ Build Where Is My Pi from scratch:
 Start Where is My Pi on RPi:
 
 		
-		java DiscoverySystem server
+		java WMP server
 
 
 
@@ -65,6 +65,6 @@ Start Where is My Pi on RPi:
 Start Where Is My Pi on PC:
 
 
-		java DiscoverySystem
+		java WMP
 
 
