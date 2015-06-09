@@ -15,6 +15,7 @@ public class WMPNodeBeacon extends WMPNode {
 	private static final long serialVersionUID = 6925430186776874224L;
 	private int   Mode;
 	private String IP;
+  private String MAC;
 	
 	protected synchronized int getMode() {
 		return Mode;
@@ -32,16 +33,26 @@ public class WMPNodeBeacon extends WMPNode {
 		IP = iP;
 	}
 
-	public WMPNodeBeacon(int Mode, String IP, String NodeName) {
-		super(NodeName);
-		this.Mode=Mode;
-		this.IP=IP;
+	protected synchronized String getMAC() {
+		return MAC;
 	}
 
-	public WMPNodeBeacon(int Mode, String IP, String NodeName, int Age) {
-		super(NodeName,Age);
+	protected synchronized void setMAC(String mAC) {
+		MAC = mAC;
+	}
+
+	public WMPNodeBeacon(int Mode, String IP, String MAC, String NodeName) {
+		super(NodeName,MAC);
 		this.Mode=Mode;
 		this.IP=IP;
+    this.MAC=MAC;
+	}
+
+	public WMPNodeBeacon(int Mode, String IP, String MAC, String NodeName, int Age) {
+		super(NodeName,MAC,Age);
+		this.Mode=Mode;
+		this.IP=IP;
+    this.MAC=MAC;    
 	}
 	
 }

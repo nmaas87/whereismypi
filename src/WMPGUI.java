@@ -10,13 +10,13 @@ public void run(){
 JFrame dS = new JFrame();
 JPanel panel = new JPanel();
 JList zwischenListe = new JList(listenModell);
-zwischenListe.setVisibleRowCount(15);
+zwischenListe.setVisibleRowCount(20);
 zwischenListe.setFixedCellHeight(20);
-zwischenListe.setFixedCellWidth(245);
+zwischenListe.setFixedCellWidth(325);
 JScrollPane fertigeListe = new JScrollPane(zwischenListe);
 
       dS.setTitle("Where is my Pi?");
-      dS.setSize(260, 340);
+      dS.setSize(340, 442);
       try
       {
         dS.setIconImage((new ImageIcon(getClass().getResource("wmp.png"))).getImage());

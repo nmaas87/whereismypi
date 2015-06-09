@@ -43,7 +43,7 @@ public void run() {
     		Mode=0; 
     	}
     	// Create Object        
-       	WMPNodeBeacon Beacon = new WMPNodeBeacon(Mode,WMP.getLocalIP(),WMP.getLocalName(),WMP.DEFAULT_AGE);          	
+       	WMPNodeBeacon Beacon = new WMPNodeBeacon(Mode,WMP.getLocalIP(),WMP.getLocalMAC(),WMP.getLocalName(),WMP.DEFAULT_AGE);          	
     	// Serialize to a byte array
         ByteArrayOutputStream bStream = new ByteArrayOutputStream();
         ObjectOutput oo = new ObjectOutputStream(bStream); 
@@ -55,7 +55,7 @@ public void run() {
         InetAddress group = InetAddress.getByName(WMP.ADDR_MULTICAST);
         DatagramPacket packet = new DatagramPacket(serializedMessage, serializedMessage.length, group, WMP.PORT_MULTICAST_CLIENT);
         socket.send(packet);        
-        System.out.println("WMP Server Socket System: Sent " + Beacon.getIP() + " / " + Beacon.getNodeName() + " to Multicast Group " + group);
+        System.out.println("WMP Server Socket System: Sent " + Beacon.getIP() + " / " + Beacon.getMAC() + " / " + Beacon.getNodeName() + " to Multicast Group " + group);
       } 
       catch (IOException e) 
       {

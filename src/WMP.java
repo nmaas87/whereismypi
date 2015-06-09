@@ -148,4 +148,44 @@ protected static String getLocalName() throws IOException{
 	    // TODO Catch that error
 	}
 
+protected static String getLocalMAC() throws IOException{          
+	  // get the right IPv4 Address - even from an Linux Interface                
+		try
+	  {
+	    Enumeration<NetworkInterface> netInter = NetworkInterface.getNetworkInterfaces();
+	    // get Interfaces
+	    while ( netInter.hasMoreElements() )
+	    {
+	      NetworkInterface ni = netInter.nextElement();
+	      // iterate through Interfaces
+	      if ( !ni.isLoopback() && !ni.isVirtual() && ni.isUp() )
+	      // only work on Interfaces which are NOT Loopbacks, Virtual or Down Intefaces 
+	      {
+	        for ( InetAddress iaddress : Collections.list(ni.getInetAddresses()) )
+	        { // get the IP Adresses of those Interfaces      
+	          if (iaddress instanceof Inet4Address)
+	          { // only work with the IPv4 Adresses of those Interfaces   
+              byte[] mac = ni.getHardwareAddress();    
+              StringBuilder sb = new StringBuilder();
+              for (int i = 0; i < mac.length; i++) {
+                  sb.append(String.format("%02X%s", mac[i], (i < mac.length - 1) ? ":" : ""));        
+              }
+              return sb.toString();
+            }     
+	        }    
+	      } 
+	    }
+	  } 
+	  catch (IOException e) 
+	  {
+	    e.printStackTrace();
+	  }
+	    return "00:00:00:00:00:00";
+	  	// only return if everything fails
+	    // TODO Catch that error
+	}  
+
+
+  
+
 }

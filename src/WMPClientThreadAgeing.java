@@ -47,7 +47,7 @@ public void run(){
           WMP.discoveryMap.get(node).setAge(age-WMP.WAIT_TIME_AGEING);
           System.out.println("WMP Client Ageing System: Node " + node + " aged: " + (WMP.discoveryMap.get(node).getAge()-WMP.WAIT_TIME_AGEING)); 
           // Add to GUI List
-          node = node + "   " + WMP.discoveryMap.get(node).getNodeName();
+          node = node + "   " + WMP.discoveryMap.get(node).getNodeName() + "   " + WMP.discoveryMap.get(node).getNodeMAC();
           WMPGUI.listenModell.add(gui_idx,node); 
           gui_idx++;
         } 

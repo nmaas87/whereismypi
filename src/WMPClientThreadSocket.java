@@ -57,14 +57,14 @@ public void run() {
 		      {
 		      	age = WMP.discoveryMap.get(received.getIP()).getAge(); 
 		      	WMP.discoveryMap.get(received.getIP()).setAge(WMP.DEFAULT_AGE);  
-		    	System.out.println("WMP Client Socket System: Node " + received.getIP() + " / " + received.getNodeName() + " already known (Age:" + age + ") New: "+ WMP.DEFAULT_AGE );
+		    	System.out.println("WMP Client Socket System: Node " + received.getIP() + " / " + received.getMAC() + " / " + received.getNodeName() + " already known (Age:" + age + ") New: "+ WMP.DEFAULT_AGE );
 		      }
 		      else
 		      {
 		    	WMPNode tmpNode = (WMPNodeBeacon) received;
 		    	tmpNode.setAge(WMP.DEFAULT_AGE);
-		    	WMP.discoveryMap.put(received.getIP(), tmpNode); 
-		    	System.out.println("WMP Client Socket System: Node " + received.getIP() + " / " + received.getNodeName() + " not known, added with Age " + WMP.DEFAULT_AGE );                            
+          WMP.discoveryMap.put(received.getIP(), tmpNode); 
+		    	System.out.println("WMP Client Socket System: Node " + received.getIP() + " / " + received.getMAC() + " / " + received.getNodeName() + " not known, added with Age " + WMP.DEFAULT_AGE );                            
 		        WMPSerializer.saveHashtable();
 		      }
 	      }
@@ -73,7 +73,7 @@ public void run() {
 		      if (WMP.discoveryMap.containsKey(received.getIP()))
 		      {
 		        WMP.discoveryMap.remove(received.getIP());
-		        System.out.println("WMP Client Socket System: Node " + received.getIP() + " / " + received.getNodeName() +  " signed off from system -> deleted");       
+		        System.out.println("WMP Client Socket System: Node " + received.getIP() + " / " + received.getMAC() + " / " + received.getNodeName() +  " signed off from system -> deleted");       
 		        WMPSerializer.saveHashtable(); 
 		      }    	  
 	      }
