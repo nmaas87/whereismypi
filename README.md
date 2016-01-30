@@ -1,3 +1,5 @@
+[![Build Status](https://drone.io/github.com/nmaas87/whereismypi/status.png)](https://drone.io/github.com/nmaas87/whereismypi/latest)
+
 whereismypi	![alt text](https://raw.githubusercontent.com/nmaas87/whereismypi/master/src/wmp.png "Where Is My Pi Logo") 
 ===========
 by Nico Maas, 2014
